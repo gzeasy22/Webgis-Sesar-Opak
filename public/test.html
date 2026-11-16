@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Heatmap</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #testmap { height: 500px; width: 100%; }
+        body { margin: 0; font-family: sans-serif; }
+    </style>
+</head>
+<body>
+    <h3 style="text-align:center;">Test Heatmap Sederhana</h3>
+    <div id="testmap"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <script>
+        var testMap = L.map('testmap').setView([-7.86, 110.42], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(testMap);
+
+        var points = [
+            [-7.860, 110.420, 1],
+            [-7.861, 110.421, 1],
+            [-7.862, 110.419, 1],
+            [-7.859, 110.422, 1],
+            [-7.863, 110.420, 1]
+        ];
+
+        L.heatLayer(points, { radius: 30, blur: 20 }).addTo(testMap);
+    </script>
+</body>
+</html>
